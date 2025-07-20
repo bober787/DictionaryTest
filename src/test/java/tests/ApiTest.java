@@ -21,7 +21,7 @@ public class ApiTest {
     @Test
     public void testLoginAndGetProfile() {
         // --- 1. Авторизация ---
-        System.out.println("=== Отправляем запрос на авторизацию ===");
+        System.out.println("== Отправляем запрос на авторизацию ==");
         Response loginResponse = given()
                 .contentType("application/x-www-form-urlencoded")
                 .formParam("grant_type", "password")
