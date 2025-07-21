@@ -1,0 +1,23 @@
+name: Sync with TestIT
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  send-to-testit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test run data to TestIT
+        env:
+          TESTIT_API_KEY: ${{ secrets.TESTIT_API_KEY }}
+        run: |
+          curl -X POST "https://team-2t57.testit.software/api/v2/automation/test-runs" \
+          -H "Authorization: Bearer $TESTIT_API_KEY" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "projectId": "1",
+            "name": "GitHub Auto Test Run",
+            "description": "Triggered by commit: ${{ github.sha }}"
+          }'
