@@ -1,4 +1,4 @@
-package tests;
+package tests.User;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.example.api.data.Variables.BASE_URL;
 
-public class GetUserProfile {
+public class GetUserProfileTest {
     @BeforeAll
     public static void setup() {
         RestAssured.baseURI = BASE_URL;

@@ -4,14 +4,15 @@ import io.restassured.response.Response;
 import lombok.Getter;
 import org.example.api.config.ApiConfig;
 import org.example.api.data.Variables;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class Auth {
     @Getter
     private static String accessToken;
-    @Getter
-    private static String refreshToken;
 
     public static void authenticate() {
         Response response = given()
@@ -31,9 +32,21 @@ public class Auth {
                 .response();
 
         accessToken = response.jsonPath().getString(Variables.JSON_ACCESS_TOKEN);
-        refreshToken = response.jsonPath().getString(Variables.JSON_REFRESH_TOKEN);
+        writeTokenToEnv(accessToken);
 
         System.out.println("Успешная аутентификация");
         System.out.println("Токен получен: " + accessToken);
     }
+
+    private static void writeTokenToEnv(String token) {
+        try {
+            String envPath = Paths.get(System.getProperty("user.dir"), ".env").toString();
+            FileWriter writer = new FileWriter(envPath);
+            writer.write("API_TOKEN=" + token);
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Ошибка при записи токена: " + e.getMessage());
+        }
+    }
+
 }

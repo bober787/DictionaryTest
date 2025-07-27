@@ -11,6 +11,8 @@ public class Variables {
     public static final String PARAM_CLIENT_SECRET = "client_secret";
     public static final String PARAM_USERNAME = "username";
     public static final String PARAM_PASSWORD = "password";
+    public static final String REFRESH_TOKEN = "refresh_token";
+    public static final String ACCESS_TOKEN = "access_token";
 
     // JSON Response fields
     public static final String JSON_ACCESS_TOKEN = "access_token";
