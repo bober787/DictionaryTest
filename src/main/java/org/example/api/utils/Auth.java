@@ -33,9 +33,6 @@ public class Auth {
 
         accessToken = response.jsonPath().getString(Variables.JSON_ACCESS_TOKEN);
         writeTokenToEnv(accessToken);
-
-        System.out.println("Успешная аутентификация");
-        System.out.println("Токен получен: " + accessToken);
     }
 
     private static void writeTokenToEnv(String token) {

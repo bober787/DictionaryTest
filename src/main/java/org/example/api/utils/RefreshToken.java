@@ -17,7 +17,7 @@ public class RefreshToken {
     private static final Dotenv dotenv = Dotenv.load();
 
     public static String updateToken() {
-        String refreshToken = extractTokenFromJson(dotenv.get("API_TOKEN"), Variables.REFRESH_TOKEN);
+        String refreshToken = extractTokenFromJson(dotenv.get("API_TOKEN"), VariablesREFRESH_TOKEN);
 
         Response response = RestAssured.given()
                 .baseUri(Variables.BASE_URL)
