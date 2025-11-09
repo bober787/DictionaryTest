@@ -1,0 +1,7 @@
+docker-plugin
+docker-commons
+docker-workflow
+git
+workflow-aggregator
+ssh-slaves
+junit
